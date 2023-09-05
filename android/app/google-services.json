@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "522807988743",
+    "project_id": "drugged-47849",
+    "storage_bucket": "drugged-47849.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522807988743:android:1a65e280621878a6d810a2",
+        "android_client_info": {
+          "package_name": "com.drugged"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "522807988743-qind74q5lsiu86gg684u7et54qpj7lku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8HgzvIX0N1XKHVPSQy9v-0VYoP-kUuvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "522807988743-qind74q5lsiu86gg684u7et54qpj7lku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
