@@ -8,6 +8,8 @@ import Home from '../screens/Home';
 // import Result from '../screens/Result';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
+import Diseases from '../screens/Diseases';
+import Medicines from '../screens/Medicines';
 // import SingleResult from '../screens/SingleResult';
 
 const Stack = createNativeStackNavigator();
@@ -24,6 +26,11 @@ export default function Navigator(props) {
           // cardStyle: {backgroundColor: 'white'},
         }}>
         <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Login"
           component={Login}
           options={{headerShown: false}}
@@ -33,9 +40,19 @@ export default function Navigator(props) {
           component={Signup}
           options={{headerShown: false}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Home"
           component={Home}
+          options={{headerShown: false}}
+        /> */}
+        <Stack.Screen
+          name="Diseases"
+          component={Diseases}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Medicines"
+          component={Medicines}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -35,74 +35,56 @@ const Home = props => {
       <Animatable.View animation="bounceIn" duration={2000}>
         <View
           style={{
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
             alignItems: 'center',
             flexDirection: 'row',
             flex: 1,
           }}>
-          <View
-            style={{
-              height: 100,
-              marginTop: 200,
-              width: 100,
-              borderRadius: 10,
-              backgroundColor: '#00cc99',
-            }}>
-            <TouchableOpacity
-              onPress={() => props.navigation.navigate('ChildFound')}
-              style={{margin: 10}}>
-              <Image
-                style={styles.image}
-                source={require('../assets/Found.png')}
-              />
-            </TouchableOpacity>
-            <Text style={styles.Image_Heading}>Report Found Child</Text>
-          </View>
-          <View
-            style={{
-              height: 100,
-              marginTop: 200,
-              width: 100,
-              marginLeft: 35,
-              borderRadius: 10,
-              backgroundColor: '#00cc99',
-            }}>
-            <TouchableOpacity
-              onPress={() => props.navigation.navigate('ChildLost')}
-              style={{margin: 10}}>
-              <Image
-                style={styles.image}
-                source={require('../assets/missing.png')}
-              />
-            </TouchableOpacity>
-            <Text style={styles.Image_Heading}>Report Missing Child</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ChildFound')}
+            style={styles.box}>
+            <Image
+              style={styles.image}
+              source={require('../assets/doctor.png')}
+            />
+            <Text style={styles.Image_Heading}>Doctors</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('Medicines')}
+            style={styles.box}>
+            <Image
+              style={styles.image}
+              source={require('../assets/drugs.png')}
+            />
+            <Text style={styles.Image_Heading}>Medicines</Text>
+          </TouchableOpacity>
         </View>
         <View
           style={{
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
             alignItems: 'center',
             flexDirection: 'row',
             flex: 1,
+            marginTop: 200,
           }}>
-          <View
-            style={{
-              height: 100,
-              marginTop: 600,
-              width: 100,
-              borderRadius: 10,
-              backgroundColor: '#00cc99',
-            }}>
-            <TouchableOpacity
-              onPress={() => props.navigation.navigate('Result')}
-              style={{margin: 10}}>
-              <Image
-                style={styles.image}
-                source={require('../assets/result.png')}
-              />
-            </TouchableOpacity>
-            <Text style={styles.Image_Heading}>Results</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('Diseases')}
+            style={styles.box}>
+            <Image
+              style={styles.image}
+              source={require('../assets/coronavirus.png')}
+            />
+            <Text style={styles.Image_Heading}>Diseases</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ChildLost')}
+            style={styles.box}>
+            <Image
+              style={styles.image}
+              source={require('../assets/drugstore.png')}
+            />
+            <Text style={styles.Image_Heading}>Medical Stores</Text>
+          </TouchableOpacity>
         </View>
       </Animatable.View>
     </View>
@@ -110,9 +92,25 @@ const Home = props => {
 };
 
 const styles = StyleSheet.create({
+  box: {
+    // shadowColor: '#43e8e8',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 4,
+    // },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 8.3,
+    // elevation: 3,
+    height: 150,
+    marginTop: 200,
+    width: 150,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   image: {
-    width: 80,
-    height: 80,
+    width: 90,
+    height: 90,
   },
   logo: {
     textAlign: 'center',
@@ -122,10 +120,10 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   Image_Heading: {
-    color: '#00cc99',
+    color: '#F39B97',
     textAlign: 'center',
-    marginTop: 5,
-    fontSize: 16,
+    marginTop: 7,
+    fontSize: 20,
     fontWeight: 'bold',
   },
 });
