@@ -41,7 +41,7 @@ const Home = props => {
             flex: 1,
           }}>
           <TouchableOpacity
-            onPress={() => props.navigation.navigate('ChildFound')}
+            onPress={() => props.navigation.navigate('Doctors')}
             style={styles.box}>
             <Image
               style={styles.image}
@@ -77,7 +77,7 @@ const Home = props => {
             <Text style={styles.Image_Heading}>Diseases</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => props.navigation.navigate('ChildLost')}
+             onPress={() => props.navigation.navigate('Stores')}
             style={styles.box}>
             <Image
               style={styles.image}
