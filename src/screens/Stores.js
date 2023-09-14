@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {SearchBar, ListItem, Avatar } from '@rneui/themed';
+import {SearchBar, ListItem, Avatar} from '@rneui/themed';
 import firestore from '@react-native-firebase/firestore';
 import {
   View,
@@ -8,28 +8,26 @@ import {
   ActivityIndicator,
   FlatList,
 } from 'react-native';
-import {cancel} from 'react-native-vector-icons/MaterialIcons';
 
-const Medicines = () => {
+const Stores = () => {
   const [search, setSearch] = useState('');
-  const [searchedMedicine, setSearchedMedicine] = useState([]);
   const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [medicines, setMedicines] = useState([]); // Initial empty array of users
+  const [diseases, setDiseases] = useState([]); // Initial empty array of users
 
   useEffect(() => {
     const subscriber = firestore()
-      .collection('Medicines ')
+      .collection('Disease')
       .onSnapshot(querySnapshot => {
-        const medicines = [];
+        const diseases = [];
 
         querySnapshot.forEach(documentSnapshot => {
-          medicines.push({
+          diseases.push({
             ...documentSnapshot.data(),
             key: documentSnapshot.id,
           });
         });
 
-        setMedicines(medicines);
+        setDiseases(diseases);
         setLoading(false);
       });
 
@@ -38,16 +36,7 @@ const Medicines = () => {
   }, []);
 
   const updateSearch = search => {
-    if (search) {
-      setSearch(search);
-      setSearchedMedicine(
-        medicines.filter(medicine => {
-          return (
-            medicine.name.toLowerCase().includes(search.toLowerCase()) 
-          );
-        }),
-      );
-    }
+    setSearch(search);
   };
 
   return (
@@ -65,15 +54,15 @@ const Medicines = () => {
         lightTheme={true}
         inputStyle={{backgroundColor: 'white'}}
         showCancel={true}
-        placeholder="Search any medicine here..."
+        placeholder="Search any medical store here..."
         onChangeText={updateSearch}
         value={search}
       />
       {loading ? (
-        <ActivityIndicator size={'large'} />
+        <ActivityIndicator size={'large'} style={{marginTop: '20%'}} />
       ) : (
         <FlatList
-          data={search != '' ? searchedMedicine : medicines}
+          data={diseases}
           renderItem={({item}) => (
             <ListItem
               bottomDivider
@@ -82,9 +71,8 @@ const Medicines = () => {
                 borderColor: '#F39B97',
                 borderRadius: 5,
                 marginBottom: 5,
-              }}
-              >
-              <Avatar rounded source={require('../assets/drugs.png')} />
+              }}>
+              <Avatar rounded source={require('../assets/coronavirus.png')} />
               <ListItem.Content>
                 <ListItem.Title style={{fontWeight: 'bold'}}>
                   {item.name}
@@ -111,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Medicines;
+export default Stores;

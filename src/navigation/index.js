@@ -3,14 +3,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Home from '../screens/Home';
-// import ChildLost from '../screens/ChildLost';
-// import ChildFound from '../screens/ChildFound';
-// import Result from '../screens/Result';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import Diseases from '../screens/Diseases';
 import Medicines from '../screens/Medicines';
-// import SingleResult from '../screens/SingleResult';
+import Doctors from '../screens/Doctors';
+import Stores from '../screens/Stores';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +51,16 @@ export default function Navigator(props) {
         <Stack.Screen
           name="Medicines"
           component={Medicines}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Doctors"
+          component={Doctors}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Stores"
+          component={Stores}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
