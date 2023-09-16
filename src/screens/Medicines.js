@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {SearchBar, ListItem, Avatar } from '@rneui/themed';
+import {SearchBar, ListItem, Avatar} from '@rneui/themed';
 import firestore from '@react-native-firebase/firestore';
 import {
   View,
@@ -43,7 +43,8 @@ const Medicines = () => {
       setSearchedMedicine(
         medicines.filter(medicine => {
           return (
-            medicine.name.toLowerCase().includes(search.toLowerCase()) 
+            medicine.name.toLowerCase().includes(search.toLowerCase()) ||
+            medicine.alternate?.toLowerCase().includes(search.toLowerCase())
           );
         }),
       );
@@ -68,12 +69,15 @@ const Medicines = () => {
         placeholder="Search any medicine here..."
         onChangeText={updateSearch}
         value={search}
+        onCancel={() => updateSearch('')}
+        onClear={() => updateSearch('')}
       />
       {loading ? (
         <ActivityIndicator size={'large'} />
       ) : (
         <FlatList
           data={search != '' ? searchedMedicine : medicines}
+          style={{marginBottom: '20%'}}
           renderItem={({item}) => (
             <ListItem
               bottomDivider
@@ -82,8 +86,7 @@ const Medicines = () => {
                 borderColor: '#F39B97',
                 borderRadius: 5,
                 marginBottom: 5,
-              }}
-              >
+              }}>
               <Avatar rounded source={require('../assets/drugs.png')} />
               <ListItem.Content>
                 <ListItem.Title style={{fontWeight: 'bold'}}>

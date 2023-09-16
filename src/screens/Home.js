@@ -77,7 +77,7 @@ const Home = props => {
             <Text style={styles.Image_Heading}>Diseases</Text>
           </TouchableOpacity>
           <TouchableOpacity
-             onPress={() => props.navigation.navigate('Stores')}
+            onPress={() => props.navigation.navigate('Stores')}
             style={styles.box}>
             <Image
               style={styles.image}
@@ -93,31 +93,38 @@ const Home = props => {
 
 const styles = StyleSheet.create({
   box: {
-    // shadowColor: '#43e8e8',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 4,
-    // },
-    // shadowOpacity: 0.2,
-    // shadowRadius: 8.3,
-    // elevation: 3,
+    shadowColor: 'grey',
+    shadowOffset: {
+      width: 5,
+      height: 5,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 6.27,
+    elevation: 10,
     height: 150,
     marginTop: 200,
     width: 150,
-    borderRadius: 8,
+    // padding: 20,
+    borderRadius: 18,
+    backgroundColor: 'white',
+    // borderWidth: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
-    width: 90,
-    height: 90,
+    width: 70,
+    height: 70,
   },
   logo: {
     textAlign: 'center',
-    fontSize: 50,
+    fontSize: 60,
     fontWeight: 'bold',
     color: '#F39B97',
     margin: 20,
+    marginBottom: 50,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
   },
   Image_Heading: {
     color: '#F39B97',

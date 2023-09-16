@@ -11,23 +11,24 @@ import {
 
 const Doctors = () => {
   const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [diseases, setDiseases] = useState([]); // Initial empty array of users
+  const [loading, setLoading] = useState(true);
+  const [doctors, setDoctors] = useState([]);
+  const [searchedDoctors, setSearchedDoctors] = useState([]);
 
   useEffect(() => {
     const subscriber = firestore()
-      .collection('Disease')
+      .collection('Consultants')
       .onSnapshot(querySnapshot => {
-        const diseases = [];
+        const doctors = [];
 
         querySnapshot.forEach(documentSnapshot => {
-          diseases.push({
+          doctors.push({
             ...documentSnapshot.data(),
             key: documentSnapshot.id,
           });
         });
 
-        setDiseases(diseases);
+        setDoctors(doctors);
         setLoading(false);
       });
 
@@ -36,7 +37,17 @@ const Doctors = () => {
   }, []);
 
   const updateSearch = search => {
-    setSearch(search);
+    if (search) {
+      setSearch(search);
+      setSearchedDoctors(
+        doctors.filter(doctor => {
+          return (
+            doctor.name.toLowerCase().includes(search.toLowerCase()) ||
+            doctor.clinic.toLowerCase().includes(search.toLowerCase())
+          );
+        }),
+      );
+    }
   };
 
   return (
@@ -62,27 +73,39 @@ const Doctors = () => {
         <ActivityIndicator size={'large'} style={{marginTop: '20%'}} />
       ) : (
         <FlatList
-          data={diseases}
+          data={search !== '' ? searchedDoctors : doctors}
+          style={{marginBottom: '20%'}}
           renderItem={({item}) => (
             <ListItem
               bottomDivider
               style={{
                 borderWidth: 2,
                 borderColor: '#F39B97',
-                borderRadius: 5,
-                marginBottom: 5,
+                borderRadius: 7,
+                margin: 5,
+                marginBottom: 7,
+                padding: 1,
               }}>
-              <Avatar rounded source={require('../assets/coronavirus.png')} />
+              <Avatar
+                size={'medium'}
+                rounded
+                source={require('../assets/doctor.png')}
+              />
               <ListItem.Content>
-                <ListItem.Title style={{fontWeight: 'bold'}}>
+                <ListItem.Title style={{fontWeight: 'bold', fontSize: 18}}>
                   {item.name}
                 </ListItem.Title>
                 <ListItem.Subtitle
                   style={{color: '#09b8b8', fontWeight: 'bold'}}>
-                  ({item.alternate})
+                  ({item.clinic})
                 </ListItem.Subtitle>
                 <ListItem.Subtitle style={{color: '#c7716d'}}>
-                  {item.use}
+                  {item.qualifications
+                    ? item.qualifications
+                    : item.qualification}
+                </ListItem.Subtitle>
+                <ListItem.Subtitle style={{color: '#c7716d'}}>
+                  {item.days}
                 </ListItem.Subtitle>
               </ListItem.Content>
             </ListItem>

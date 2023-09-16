@@ -79,12 +79,12 @@ const Signup = props => {
       <Animatable.Image
         animation="zoomIn"
         duration={3000}
-        source={require('../assets/Drugged_Logo.jpg')}
+        source={require('../assets/Drugged_Logo-removebg.png')}
         style={{
-          width: '50%',
+          width: '60%',
           height: '30%',
-          marginBottom: '1%',
-          marginTop: '5%',
+          marginBottom: '10%',
+          marginTop: '2%',
         }}></Animatable.Image>
 
       <Text style={styles.logo}>WELCOME</Text>
@@ -172,20 +172,23 @@ const styles = StyleSheet.create({
     height: 45,
     width: 300,
     borderRadius: 30,
-    backgroundColor: '#befafa',
+    backgroundColor: '#b5f4f5',
   },
   logo: {
-    extAlign: 'center',
+    textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
     color: '#F39B97',
     marginBottom: 20,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 5,
   },
   text: {
     marginLeft: 20,
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#F39B97',
+    color: '#f0776e',
     textAlign: 'center',
   },
   button: {
